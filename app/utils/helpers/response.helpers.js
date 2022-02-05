@@ -1,22 +1,17 @@
-export const Success = (message, code, data = []) => ({
+export const Success = (code, message, data = []) => ({
   status: 'success',
-  message,
   code,
+  message,
   data,
 });
 
-export const Error = (message, code) => ({
+export const Error = (code, message) => ({
   status: 'error',
   message,
   code,
   data: null,
 });
 
-export const successResponse = (res, message, code, data = []) => {
-  res.status(code).json({
-    status: 'success',
-    message,
-    code,
-    data,
-  });
+export const response = (res, resBody) => {
+  res.status(resBody.code).json(resBody);
 };

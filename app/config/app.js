@@ -1,3 +1,5 @@
+/* eslint-disable import/no-cycle */
+/* eslint-disable no-unused-vars */
 /* eslint-disable function-paren-newline */
 /* eslint-disable implicit-arrow-linebreak */
 import fs from 'fs';
@@ -7,7 +9,7 @@ import fileStreamRotator from 'file-stream-rotator';
 import helmet from 'helmet';
 import cors from 'cors';
 import initLogger from './logger';
-import routes from '../routes/v1';
+import router from '../routes/v1';
 
 const logDirectory = './log';
 const checkLogDir = fs.existsSync(logDirectory) || fs.mkdirSync(logDirectory);
@@ -64,7 +66,7 @@ const expressConfig = (app) => {
     next();
   });
 
-  app.use('/api/v1', routes);
+  app.use('/api/v1', router);
 
   // catch 404 and forward to error handler
   app.use((req, res, next) => {

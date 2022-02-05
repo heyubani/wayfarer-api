@@ -7,6 +7,6 @@ const options = {
 };
 
 const pgp = pg(options);
-const db = pgp(config.DATABASE_URL);
+const db = pgp(config.DATABASE_DEV_URL);
 
 export default db;
